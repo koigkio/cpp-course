@@ -1,4 +1,3 @@
-// Библиотека книг — консольная программа.
 #include <iostream>
 #include <string>
 #include <vector>
@@ -12,14 +11,13 @@ using namespace std;
 
 class Book {
 public:
-    string title;          // название
-    string author;         // автор
-    bool isIssued = false; // выдана ли книга
+    string title;
+    string author;
+    bool isIssued = false;
 
     Book(const string& title, const string& author) : title(title), author(author) {}
 };
 
-// Ищет книгу по названию. Возвращает индекс книги или -1, если не нашёл.
 int findBook(const vector<Book>& books, const string& title) {
     for (int i = 0; i < (int)books.size(); i++) {
         if (books[i].title == title) {
@@ -42,7 +40,7 @@ string askTitle() {
 
 int main() {
 #ifdef _WIN32
-    SetConsoleCP(65001);       // чтобы русские буквы вводились и выводились в консоли Windows
+    SetConsoleCP(65001);
     SetConsoleOutputCP(65001);
 #endif
 
@@ -60,7 +58,7 @@ int main() {
 
         int choice;
         cin >> choice;
-        if (cin.fail()) { // ввели не число
+        if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Ошибка: введите номер пункта меню.\n";
@@ -75,7 +73,7 @@ int main() {
                 break;
             }
             for (int i = 0; i < (int)books.size(); i++) {
-                cout << i + 1 << ". " << books[i].title << " — " << books[i].author
+                cout << i + 1 << ". " << books[i].title << " - " << books[i].author
                      << " " << status(books[i]) << "\n";
             }
             break;
